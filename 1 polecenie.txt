@@ -1,8 +1,0 @@
-CREATE TABLE postac (
-id_postaci INT AUTO_INCREMENT PRIMARY KEY, 
-nazwa varchar(40) NOT NULL, 
-rodzaj set('wiking','ptak','kobieta'), 
-data_ur date, 
-wiek int unsigned
-);
-
