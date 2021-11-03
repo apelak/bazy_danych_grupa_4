@@ -1,0 +1,68 @@
+ZADANIE 1
+
+select * from postac where rodzaj='wiking' and nazwa!='Bjorn' order by wiek desc;
+
+delete from postac where id_postaci=4 or id_postaci = 7;
+
+set foreign_key_checks = 0;
+
+alter table postac drop foreign key postac_ibfk_1;
+
+alter table walizka drop foreign key walizka_postac;
+
+alter table przetwory drop foreign key przetwory_ibfk_1;
+
+alter table przetwory drop foreign key przetwory_ibfk_2;
+
+alter table postac modify id_postaci int;
+
+alter table postac drop primary key;
+
+ZADANIE 2
+
+alter table postac add column pesel varchar(11) not null;
+
+update postac set pesel=12345678910 where id_postaci =1;(dla kazdej postaci inne)
+
+alter table postac add constraint primary key(pesel);
+
+alter table postac drop column rodzaj;
+
+alter table postac add column rodzaj set('wiking','ptak','kobieta','syrena');
+
+insert into postac values(9,'Gertruda Nieszczera','1845-04-13',49,null,null,12385738246,'syrena');
+
+ZADANIE 3
+
+update postac set statek='wiktoria' where nazwa like'%a%';
+
+update statek set max_ladownosc= max_ladownosc * 0.7 where data_wodowania >= '1901-01-01' and data_wodowania = '2000-12-31';
+
+alter table postac add check(wiek<=18);
+
+ZADANIE 4
+
+alter table postac modify rodzaj set
+
+('wiking','ptak','kobieta','syrena','waz');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
