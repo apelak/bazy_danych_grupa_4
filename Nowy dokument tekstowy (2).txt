@@ -1,0 +1,29 @@
+zadanie 3
+2
+select distinct k.nazwa, case when u.id_uczestnika is not null then 'tak' else 'nie' end as 'czy bral udzial'
+from kreatura k
+left join uczestnicy u on k.idKreatury=u.id_uczestnika;
+
+zadanie 4 
+1
+select distinct w.nazwa, sum(char_length(ew.dziennik)) from wyprawa w 
+inner join etapy_wyprawy ew on w.id_wyprawy = ew.idWyprawy 
+group by w.nazwa 
+having sum(char_length(ew.dziennik))<400;
+
+2
+select u.id_wyprawy, sum(z.waga*e.ilosc)/count(distinct u.id_uczestnika)
+,group_concat(distinct u.id_uczestnika) from
+uczestnicy u
+left join ekwipunek e on u.id_uczestnika=e.idKreatury
+left join zasob z on e.idZasobu=z.idZasobu 
+group by u.id_wyprawy;
+
+
+
+
+
+
+
+
+
