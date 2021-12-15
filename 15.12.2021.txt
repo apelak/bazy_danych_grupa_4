@@ -1,0 +1,92 @@
+Zad1
+
+select nazwisko from pracownik order by nazwisko;
+
+Zad2
+
+select imie, nazwisko, pensja from pracownik where year(data_urodzenia)>1979;
+
+zad3
+
+select * from pracownik where pensja between 3500 and 5000;
+
+zad 4
+
+select towar from stan_magazynowy where ilosc>10;
+
+zad 5
+
+select nazwa_towaru from towar where nazwa_towaru like 'A%' or nazwa_towaru like 'B%' or nazwa_towaru like 'C%' order by nazwa_towaru;
+
+zad 6
+
+select * from klient where czy_firma = 0;
+
+zad 7
+
+select * from zamowienie order by data_zamowienia desc limit 10;
+
+zad 8
+
+select * from pracownik order by pensja limit 5;
+
+zad 9
+
+select * from towar where nazwa_towaru not like '%a%' order by cena_zakupu desc limit 10;
+
+zad 10
+
+select * from towar t inner join stan_magazynowy sm on t.id_towaru = sm.towar inner join jednostka_miary jm on sm.jm=jm.id_jednostki where jm.nazwa = 'szt';
+
+zad 11
+
+create table pelaka.towary_powyzej_100 select * from towar where cena_zakupu >=100;
+
+zad 12
+
+create table pelaka.pracownik_50_plus like pracownik;
+insert into pelaka.pracownik_50_plus select * from pracownik where year(now()) - year(data_urodzenia)>=50;
+
+Zad 1
+
+select p.imie, p.nazwisko, d.nazwa from pracownik p inner join dzial d on p.dzial=d.id_dzialu;
+
+Zad 2
+
+select t.nazwa_towaru, k.nazwa_kategori, sm.ilosc from towar t inner join kategoria k on t.kategoria=k.id_kategori inner join stan_magazynowy sm on t.id_towaru=sm.towar order by sm.ilosc desc;
+
+Zad 3
+
+select * from zamowienie z inner join status_zamowienia sz on z.status_zamowienia=sz.id_statusu_zamowienia where nazwa_statusu_zamowienia='anulowane';
+
+Zad 4
+
+select pelna_nazwa from klient k inner join adres_klienta ak on k.id_klienta=ak.klient inner join typ_adresu ta on ak.typ_adresu=ta.id_typu where ak.miejscowosc ='Olsztyn' and ta.nazwa='podstawowy';
+
+Zad 5
+
+select jm.nazwa from jednostka_miary jm left join stan_magazynowy sm on jm.id_jednostki=sm.jm where sm.jm is null;
+
+Zad 6
+
+select z.numer_zamowienia, t.nazwa_towaru, pz.ilosc, pz.cena from zamowienie z inner join pozycja_zamowienia pz on z.id_zamowienia=pz.zamowienie inner join towar t on pz.towar=t.id_towaru where year(data_zamowienia) = 2018;
+
+Zad 7
+
+create table towary_full_info select t.nazwa_towaru, t.cena_zakupu, k.nazwa_kategori, sm.ilosc, jm.nazwa;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
